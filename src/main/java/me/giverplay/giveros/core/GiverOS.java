@@ -27,7 +27,7 @@ public final class GiverOS
   {
     logger.debug(tl("system.starting"));
     isAlive = true;
-    desktop = new Desktop();
+    desktop = new Desktop(this);
     updater = new UpdateThread(this);
     updater.start();
   }
@@ -55,13 +55,17 @@ public final class GiverOS
   
       try
       {
-        updater.kill();
+        if(updater != null)
+          updater.kill();
       }
       catch(InterruptedException e)
       {
         getLogger().warn("system.error.kill");
       }
-  
+      
+      if(desktop != null)
+        desktop.dispose();
+      
       new Bluescreen(t);
       
     }, "Crash Handler").start();
