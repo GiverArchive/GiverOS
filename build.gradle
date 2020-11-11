@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'me.giverplay'
+group 'me.giverplay.giveros'
 version '1.0-SNAPSHOT'
 
 repositories {
