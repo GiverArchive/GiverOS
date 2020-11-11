@@ -1,11 +1,13 @@
 package me.giverplay.giveros.core;
 
-import me.giverplay.giveros.messages.I18n;
+import static me.giverplay.giveros.messages.I18n.tl;
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
+import org.apache.commons.lang3.NotImplementedException;
 
 public final class Desktop extends Canvas
 {
@@ -23,7 +25,7 @@ public final class Desktop extends Canvas
     setPreferredSize(new Dimension(WIDTH, HEIGHT));
     
     frame = new JFrame();
-    frame.setTitle(I18n.tl("system.name"));
+    frame.setTitle(tl("system.name"));
     frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     frame.setResizable(false);
     frame.add(this);
@@ -40,8 +42,7 @@ public final class Desktop extends Canvas
     }
     catch(Throwable e)
     {
-      dispose();
-      system.handleCrash(e);
+      throw new IllegalStateException(tl("message.error.assets"));
     }
   }
   
@@ -69,7 +70,7 @@ public final class Desktop extends Canvas
   
   protected void drawWindows()
   {
-  
+    throw new NotImplementedException("Not implemented yet");
   }
   
   protected void clear(int r, int g, int b)

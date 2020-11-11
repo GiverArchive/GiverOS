@@ -18,19 +18,13 @@ public final class UpdateThread implements Runnable
   {
     while(system.isAlive)
     {
+      desktop.draw();
+      
       try
       {
-        desktop.draw();
         Thread.sleep(1000 / 60);
       }
-      catch(InterruptedException ignore)
-      {
-      
-      }
-      catch(Throwable t)
-      {
-        system.handleCrash(t);
-      }
+      catch(InterruptedException ignore) { }
     }
   }
   
