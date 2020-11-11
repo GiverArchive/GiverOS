@@ -1,7 +1,5 @@
 package me.giverplay.giveros.core;
 
-import static me.giverplay.giveros.messages.I18n.tl;
-
 public final class UpdateThread implements Runnable
 {
   private final GiverOS system;

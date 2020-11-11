@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'me.giverplay'
+group 'me.giverplay.me.giverplay.giveros'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -10,5 +10,5 @@ repositories {
 }
 
 dependencies {
-
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

@@ -1,13 +1,11 @@
 package me.giverplay.giveros.core;
 
+import me.giverplay.giveros.messages.I18n;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JFrame;
-
-
-import static me.giverplay.giveros.messages.I18n.tl;
 
 public final class Desktop extends Canvas
 {
@@ -25,7 +23,7 @@ public final class Desktop extends Canvas
     setPreferredSize(new Dimension(WIDTH, HEIGHT));
     
     frame = new JFrame();
-    frame.setTitle(tl("system.name"));
+    frame.setTitle(I18n.tl("system.name"));
     frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     frame.setResizable(false);
     frame.add(this);

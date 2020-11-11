@@ -1,9 +1,6 @@
 package me.giverplay.giveros.core;
 
-import static me.giverplay.giveros.messages.I18n.tl;
 
-
-import java.io.IOException;
 import me.giverplay.giveros.messages.I18n;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +22,7 @@ public final class GiverOS
   
   public void start()
   {
-    logger.debug(tl("system.starting"));
+    logger.debug(I18n.tl("system.starting"));
     isAlive = true;
     desktop = new Desktop(this);
     updater = new UpdateThread(this);
