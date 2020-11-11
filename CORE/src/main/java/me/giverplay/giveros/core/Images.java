@@ -10,8 +10,8 @@ public final class Images
   
   protected static void init() throws Throwable
   {
-    background = load("images/background.jpg");
-    shutdown = load("images/shutdown.png");
+    background = load("background.jpg");
+    shutdown = load("shutdown.png");
   }
   
   private static BufferedImage load(String name) throws Throwable
