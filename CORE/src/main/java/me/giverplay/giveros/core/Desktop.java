@@ -6,17 +6,22 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import org.apache.commons.lang3.NotImplementedException;
+import me.giverplay.giveros.sdk.gui.Window;
 
 public final class Desktop extends Canvas
 {
   public static final int WIDTH = 1080;
   public static final int HEIGHT = 640;
+  public static final int TASKBAR_OFFSET = 42;
   
   private final JFrame frame;
   private final Graphics graphics;
   private final GiverOS system;
+  
+  private Window opened;
+  private BufferedImage layer;
   
   public Desktop(GiverOS system)
   {
@@ -51,7 +56,7 @@ public final class Desktop extends Canvas
     clear(0, 0, 0);
     drawBackground();
     drawTaskBar();
-    drawWindows();
+    drawWindow();
     getBufferStrategy().show();
   }
   
@@ -63,14 +68,18 @@ public final class Desktop extends Canvas
   protected void drawTaskBar()
   {
     graphics.setColor(new Color(0, 0, 0, 210));
-    graphics.fillRect(0, HEIGHT - 42, WIDTH, 42);
+    graphics.fillRect(0, HEIGHT - TASKBAR_OFFSET, WIDTH, TASKBAR_OFFSET);
     
-    graphics.drawImage(Images.shutdown, 2, HEIGHT - 40, 38, 38, null);
+    graphics.drawImage(Images.shutdown, 2, HEIGHT - (TASKBAR_OFFSET - 2), TASKBAR_OFFSET - 4, TASKBAR_OFFSET - 4, null);
   }
   
-  protected void drawWindows()
+  protected void drawWindow()
   {
-    throw new NotImplementedException("Not implemented yet");
+    if(opened == null)
+      return;
+    
+    opened.draw(layer.getGraphics());
+    graphics.drawImage(layer, 0, 0, opened.getWidth(), opened.getHeight(), null);
   }
   
   protected void clear(int r, int g, int b)
@@ -82,5 +91,22 @@ public final class Desktop extends Canvas
   protected void dispose()
   {
     frame.dispose();
+  }
+  
+  public void openWindow(Window window)
+  {
+    this.opened = window;
+    this.layer = new BufferedImage(WIDTH, getWindowHeight(), BufferedImage.TYPE_INT_RGB);
+  }
+  
+  public void closeWindow()
+  {
+    this.opened = null;
+    this.layer = null;
+  }
+  
+  public static int getWindowHeight()
+  {
+    return HEIGHT - TASKBAR_OFFSET;
   }
 }

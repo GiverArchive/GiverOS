@@ -10,9 +10,14 @@ public class Window
   
   private String name;
   
-  public Window(String windowName)
+  private final int width;
+  private final int height;
+  
+  public Window(String windowName, int width, int height)
   {
     this.name = windowName;
+    this.width = width;
+    this.height = height;
   }
   
   public void dispatchClickEvent(int x, int y)
@@ -39,5 +44,15 @@ public class Window
   public void setName(String name)
   {
     this.name = name;
+  }
+  
+  public int getWidth()
+  {
+    return width;
+  }
+  
+  public int getHeight()
+  {
+    return height;
   }
 }
