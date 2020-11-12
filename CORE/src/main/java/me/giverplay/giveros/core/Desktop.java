@@ -15,6 +15,7 @@ public final class Desktop extends Canvas
   public static final int WIDTH = 1080;
   public static final int HEIGHT = 640;
   public static final int TASKBAR_OFFSET = 42;
+  public static final int DECO_OFFSET = 24;
   
   private final JFrame frame;
   private final Graphics graphics;
@@ -49,6 +50,8 @@ public final class Desktop extends Canvas
     {
       throw new IllegalStateException(tl("message.error.assets"));
     }
+    
+    openWindow(new Window("Shop", WIDTH, getWindowHeight()));
   }
   
   protected void draw()
@@ -67,7 +70,7 @@ public final class Desktop extends Canvas
   
   protected void drawTaskBar()
   {
-    graphics.setColor(new Color(0, 0, 0, 210));
+    graphics.setColor(new Color(90, 89, 89, 210));
     graphics.fillRect(0, HEIGHT - TASKBAR_OFFSET, WIDTH, TASKBAR_OFFSET);
     
     graphics.drawImage(Images.shutdown, 2, HEIGHT - (TASKBAR_OFFSET - 2), TASKBAR_OFFSET - 4, TASKBAR_OFFSET - 4, null);
@@ -79,7 +82,11 @@ public final class Desktop extends Canvas
       return;
     
     opened.draw(layer.getGraphics());
-    graphics.drawImage(layer, 0, 0, opened.getWidth(), opened.getHeight(), null);
+    graphics.drawImage(layer, 0, DECO_OFFSET, opened.getWidth(), opened.getHeight(), null);
+    graphics.setColor(new Color(0x929C9C));
+    graphics.fillRect(0, 0, WIDTH, DECO_OFFSET);
+    graphics.drawImage(Images.close, WIDTH - DECO_OFFSET, 2, DECO_OFFSET - 4, DECO_OFFSET - 4, null);
+    graphics.drawImage(Images.minimize, WIDTH - DECO_OFFSET * 2 - 2, 2, DECO_OFFSET - 4, DECO_OFFSET - 4, null);
   }
   
   protected void clear(int r, int g, int b)
@@ -114,6 +121,6 @@ public final class Desktop extends Canvas
   
   public static int getWindowHeight()
   {
-    return HEIGHT - TASKBAR_OFFSET;
+    return HEIGHT - TASKBAR_OFFSET - DECO_OFFSET;
   }
 }
