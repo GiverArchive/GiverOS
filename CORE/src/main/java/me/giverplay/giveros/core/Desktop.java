@@ -86,6 +86,13 @@ public final class Desktop extends Canvas
   {
     graphics.setColor(new Color(r, g, b));
     graphics.fillRect(0, 0, WIDTH, HEIGHT);
+    
+    if(layer != null)
+    {
+      Graphics gf = layer.getGraphics();
+      gf.setColor(new Color(r, g, b));
+      gf.fillRect(0, 0, layer.getWidth(), layer.getHeight());
+    }
   }
   
   protected void dispose()
