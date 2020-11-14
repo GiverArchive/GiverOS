@@ -50,8 +50,6 @@ public final class Desktop extends Canvas
     {
       throw new IllegalStateException(tl("message.error.assets"));
     }
-    
-    openWindow(new Window("Shop", WIDTH, getWindowHeight()));
   }
   
   protected void draw()
