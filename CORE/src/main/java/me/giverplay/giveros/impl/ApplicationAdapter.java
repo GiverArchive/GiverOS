@@ -3,41 +3,48 @@ package me.giverplay.giveros.impl;
 import me.giverplay.giveros.sdk.application.Application;
 import me.giverplay.giveros.sdk.gui.Window;
 
-public class ApplicationAdapter implements Application
+public abstract class ApplicationAdapter implements Application
 {
+  private final WindowImpl WINDOW;
+  private final String NAME;
+  
+  private boolean opened;
+  
+  public ApplicationAdapter(String name, WindowImpl window)
+  {
+    this.NAME = name;
+    this.WINDOW = window;
+  }
+  
+  public void setOpened(boolean opened)
+  {
+    this.opened = opened;
+  
+    if(opened)
+    {
+      onCreate();
+    }
+    else
+    {
+      onDestroy();
+    }
+  }
+  
   @Override
   public String getName()
   {
-    return null;
+    return NAME;
   }
   
   @Override
   public Window getWindow()
   {
-    return null;
+    return WINDOW;
   }
   
   @Override
   public boolean isOpened()
   {
-    return false;
-  }
-  
-  @Override
-  public void onCreate()
-  {
-  
-  }
-  
-  @Override
-  public void onDestroy()
-  {
-  
-  }
-  
-  @Override
-  public void onPause()
-  {
-  
+    return opened;
   }
 }

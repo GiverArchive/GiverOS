@@ -54,6 +54,24 @@ public class WindowImpl implements Window
   }
   
   @Override
+  public void addElement(WindowElement element)
+  {
+    synchronized(elements)
+    {
+      elements.add(element);
+    }
+  }
+  
+  @Override
+  public void removeElement(WindowElement element)
+  {
+    synchronized(elements)
+    {
+      elements.add(element);
+    }
+  }
+  
+  @Override
   public int getWidth()
   {
     return width;

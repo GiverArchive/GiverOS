@@ -10,6 +10,10 @@ public interface Window
   
   void setName(String name);
   
+  void addElement(WindowElement element);
+  
+  void removeElement(WindowElement element);
+  
   int getWidth();
   
   int getHeight();
