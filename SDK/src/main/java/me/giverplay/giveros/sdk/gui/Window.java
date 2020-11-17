@@ -2,7 +2,7 @@ package me.giverplay.giveros.sdk.gui;
 
 import java.awt.Graphics;
 
-public interface Window
+public interface Window extends Drawable
 {
   void draw(Graphics g);
   
