@@ -1,10 +1,11 @@
 package me.giverplay.giveros.sdk.gui;
 
 import java.awt.Graphics;
+import java.util.function.Consumer;
 
-public interface Window extends Drawable
+public interface Window
 {
-  void draw(Graphics g);
+  void onDraw(Consumer<Graphics> e);
   
   String getName();
   

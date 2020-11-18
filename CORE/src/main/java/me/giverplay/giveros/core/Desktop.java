@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
+import me.giverplay.giveros.impl.WindowImpl;
+import me.giverplay.giveros.sdk.application.Application;
 import me.giverplay.giveros.sdk.gui.Window;
 
 public final class Desktop extends Canvas
@@ -79,7 +81,7 @@ public final class Desktop extends Canvas
     if(opened == null)
       return;
     
-    opened.draw(layer.getGraphics());
+    ((WindowImpl) opened).draw(layer.getGraphics());
     graphics.drawImage(layer, 0, DECO_OFFSET, opened.getWidth(), opened.getHeight(), null);
     graphics.setColor(new Color(0x929C9C));
     graphics.fillRect(0, 0, WIDTH, DECO_OFFSET);
