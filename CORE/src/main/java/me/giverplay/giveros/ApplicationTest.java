@@ -1,25 +1,15 @@
+package me.giverplay.giveros;
+
+import me.giverplay.giveros.core.Desktop;
+import me.giverplay.giveros.impl.WindowImpl;
+import me.giverplay.giveros.sdk.application.Application;
+import me.giverplay.giveros.sdk.gui.Window;
 
 import java.awt.Color;
 import java.util.Random;
-import me.giverplay.giveros.core.Desktop;
-import me.giverplay.giveros.core.GiverOS;
-import me.giverplay.giveros.impl.WindowImpl;
-import me.giverplay.giveros.messages.I18n;
-import me.giverplay.giveros.sdk.application.Application;
-import me.giverplay.giveros.sdk.gui.Window;
-import org.apache.logging.log4j.LogManager;
 
 public class ApplicationTest implements Application
 {
-  public static void main(String[] args)
-  {
-    GiverOS os = new GiverOS(new I18n(), LogManager.getLogger());
-    os.start();
-    ApplicationTest app = new ApplicationTest();
-    app.onCreate();
-    os.getDesktop().openWindow(app.window);
-  }
-  // -------------------------------------------------- //
   private Window window;
   
   @Override
@@ -29,7 +19,7 @@ public class ApplicationTest implements Application
     
     getWindow().onDraw(e -> {
       e.setColor(Color.RED);
-      e.fillRect(new Random().nextInt(300), new Random().nextInt(300), 100, 100);
+      e.fillRect(new Random().nextInt(7000), new Random().nextInt(450), 100, 100);
     });
   }
   

@@ -2,7 +2,23 @@ plugins {
     id 'java'
 }
 
+group 'me.giverplay.giveros'
 version '1.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+jar {
+    manifest {
+        attributes "Main-Class": "me.giverplay.giveros.Launcher"
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
 
 repositories {
     mavenCentral()

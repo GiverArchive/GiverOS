@@ -1,16 +1,16 @@
 package me.giverplay.giveros.core;
 
-import static me.giverplay.giveros.messages.I18n.tl;
+import me.giverplay.giveros.impl.WindowImpl;
+import me.giverplay.giveros.sdk.gui.Window;
 
+import javax.swing.JFrame;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
-import me.giverplay.giveros.impl.WindowImpl;
-import me.giverplay.giveros.sdk.application.Application;
-import me.giverplay.giveros.sdk.gui.Window;
+
+import static me.giverplay.giveros.messages.I18n.tl;
 
 public final class Desktop extends Canvas
 {
@@ -34,7 +34,7 @@ public final class Desktop extends Canvas
     
     frame = new JFrame();
     frame.setTitle(tl("system.name"));
-    frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false);
     frame.add(this);
     frame.pack();

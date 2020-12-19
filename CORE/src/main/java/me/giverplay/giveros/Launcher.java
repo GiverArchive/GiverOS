@@ -21,5 +21,16 @@ public final class Launcher
   private void launch()
   {
     system.start();
+
+    ApplicationTest app = new ApplicationTest();
+    app.onCreate();
+
+    try {
+      Thread.sleep(3000);
+    } catch(InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    system.getDesktop().openWindow(app.getWindow());
   }
 }
