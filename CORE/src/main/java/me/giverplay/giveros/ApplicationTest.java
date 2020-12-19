@@ -15,6 +15,9 @@ public class ApplicationTest implements Application
   @Override
   public void onCreate()
   {
+    Object obj = null;
+    obj.hashCode();
+
     window = new WindowImpl("Testando Window", Desktop.WIDTH, Desktop.getWindowHeight());
     
     getWindow().onDraw(e -> {

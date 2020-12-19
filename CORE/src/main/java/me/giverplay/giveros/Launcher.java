@@ -22,15 +22,14 @@ public final class Launcher
   {
     system.start();
 
-    ApplicationTest app = new ApplicationTest();
-    app.onCreate();
-
     try {
       Thread.sleep(3000);
     } catch(InterruptedException e) {
       e.printStackTrace();
     }
 
+    ApplicationTest app = new ApplicationTest();
+    app.onCreate();
     system.getDesktop().openWindow(app.getWindow());
   }
 }
